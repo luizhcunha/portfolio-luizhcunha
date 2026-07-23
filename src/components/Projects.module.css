@@ -1,0 +1,134 @@
+/*
+  minmax(300px, 1fr) diz que nenhuma coluna fica abaixo de 300px. Quando a tela
+  aperta e não cabem mais duas, a grade passa a uma coluna sozinha. É o
+  responsivo saindo de graça, sem breakpoint escrito.
+*/
+.grade {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+
+  /*
+    A faixa do topo é um retângulo de canto vivo. Sem overflow hidden ela
+    vazaria por cima do arredondamento do card e os cantos ficariam quadrados.
+  */
+  overflow: hidden;
+
+  /*
+    Estado inicial dos cards. Além da seção inteira surgir, cada card entra com
+    um atraso próprio, definido no JSX pela variável --atraso. O resultado é a
+    cascata da esquerda para a direita.
+  */
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity var(--duration-reveal) var(--ease-out) var(--atraso, 0s),
+    transform var(--duration-reveal) var(--ease-out) var(--atraso, 0s),
+    border-color var(--duration-theme) var(--ease-out),
+    background var(--duration-theme) var(--ease-out);
+}
+
+/*
+  O seletor casa com o atributo que a seção pai coloca no DOM ao revelar.
+  Atributos escapam do escopo dos CSS Modules, o que permite a um componente
+  reagir ao estado de outro sem precisar receber nada por props.
+*/
+[data-visivel='true'] .card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/*
+  Padrão de listras diagonais ocupando o espaço da captura de tela.
+
+  repeating-linear-gradient repete a sequência de paradas indefinidamente: 10px
+  de uma cor, 10px da outra, no ângulo de 135 graus. Nenhuma imagem envolvida,
+  então o peso é zero e as cores acompanham o tema.
+*/
+.capa {
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  text-align: center;
+  background: repeating-linear-gradient(
+    135deg,
+    var(--color-bg-alt),
+    var(--color-bg-alt) 10px,
+    var(--color-card) 10px,
+    var(--color-card) 20px
+  );
+}
+
+.legendaCapa {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-muted);
+}
+
+.corpo {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px;
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.titulo {
+  font-family: var(--font-heading);
+  font-size: 21px;
+  font-weight: 600;
+}
+
+.subtitulo {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-muted);
+}
+
+.descricao {
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: var(--color-muted);
+}
+
+.stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+
+  /* Empurra a lista para a base do card, alinhando as tags de todos eles mesmo
+     quando as descrições têm alturas diferentes. */
+  margin-top: auto;
+  padding-top: 4px;
+}
+
+/*
+  Tags de projeto usam contorno, e não fundo preenchido como as de habilidades.
+  A diferença é proposital: aqui elas são informação de apoio dentro de um card
+  que já tem bastante texto, e o preenchimento competiria pela atenção.
+*/
+.tecnologia {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 5px 9px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-tag);
+  color: var(--color-muted);
+}

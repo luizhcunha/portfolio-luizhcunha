@@ -22,7 +22,14 @@ export function Section({ id, rotulo, titulo, subtitulo, children }) {
     <section
       id={id}
       ref={referencia}
-      className={`container ${estilos.secao} ${visivel ? estilos.visivel : ''}`}
+      className={`container ${estilos.secao}`}
+      /*
+        O estado sai para o DOM como atributo, e não apenas como classe, porque
+        atributos não são renomeados pelos CSS Modules. É assim que o CSS de um
+        componente filho, em outro arquivo, consegue reagir à revelação desta
+        seção para escalonar a entrada dos próprios itens.
+      */
+      data-visivel={visivel}
     >
       <div className={estilos.cabecalho}>
         <p className={estilos.rotulo}>{rotulo}</p>

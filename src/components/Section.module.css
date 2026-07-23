@@ -20,7 +20,7 @@
     transform var(--duration-reveal) var(--ease-out);
 }
 
-.visivel {
+.secao[data-visivel='true'] {
   opacity: 1;
   transform: translateY(0);
 }
