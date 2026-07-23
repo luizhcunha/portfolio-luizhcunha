@@ -1,4 +1,6 @@
 import { About } from './components/About.jsx'
+import { Contact } from './components/Contact.jsx'
+import { Footer } from './components/Footer.jsx'
 import { Header } from './components/Header.jsx'
 import { Hero } from './components/Hero.jsx'
 import { Projects } from './components/Projects.jsx'
@@ -16,6 +18,8 @@ import { ProvedorDeTema } from './context/ProvedorDeTema.jsx'
 
   Os provedores ficam por fora de tudo para que qualquer seção, em qualquer
   profundidade, consiga ler o tema e o idioma sem receber nada por props.
+
+  Daqui para baixo é só composição: a ordem das linhas é a ordem da página.
 */
 export default function App() {
   return (
@@ -29,7 +33,10 @@ export default function App() {
           <Skills />
           <Projects />
           <Timeline />
+          <Contact />
         </main>
+
+        <Footer />
       </ProvedorDeIdioma>
     </ProvedorDeTema>
   )

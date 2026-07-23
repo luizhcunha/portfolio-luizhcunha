@@ -1,0 +1,97 @@
+.faixa {
+  margin-top: 40px;
+  padding: 90px var(--layout-padding-x);
+
+  /*
+    O azul é o mesmo nos dois temas. Como a faixa não usa a classe container, o
+    fundo vai de borda a borda da janela, e só o conteúdo interno fica limitado.
+  */
+  background: var(--color-vibrant);
+
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity var(--duration-reveal) var(--ease-out),
+    transform var(--duration-reveal) var(--ease-out);
+}
+
+.faixa[data-visivel='true'] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.conteudo {
+  max-width: 820px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+}
+
+.titulo {
+  font-family: var(--font-heading);
+  font-size: clamp(28px, 4.6vw, 44px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-on-vibrant);
+}
+
+.corpo {
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--color-on-vibrant-muted);
+  max-width: 52ch;
+}
+
+.acoes {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.botao {
+  font-size: 15px;
+  font-weight: 600;
+  padding: 13px 24px;
+  border-radius: var(--radius-tag);
+  transition:
+    background 0.2s var(--ease-out),
+    color 0.2s var(--ease-out),
+    opacity 0.2s var(--ease-out);
+}
+
+/*
+  Botão invertido: fundo claro com o azul da faixa como cor do texto. A
+  inversão é o que sinaliza qual das três é a ação principal.
+*/
+.botaoPrimario {
+  composes: botao;
+  background: var(--color-on-vibrant);
+  color: var(--color-vibrant);
+}
+
+.botaoPrimario:hover {
+  opacity: 0.88;
+}
+
+.botaoSecundario {
+  composes: botao;
+  border: 1px solid var(--color-on-vibrant-muted);
+  color: var(--color-on-vibrant);
+}
+
+.botaoSecundario:hover {
+  background: rgb(255 255 255 / 0.12);
+}
+
+/*
+  O contorno de foco padrão é azul, e sobre um fundo azul ele desapareceria.
+  Nesta faixa ele passa a ser claro.
+*/
+.faixa :focus-visible {
+  outline-color: var(--color-on-vibrant);
+}

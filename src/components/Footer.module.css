@@ -1,0 +1,30 @@
+.rodape {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-block: 32px;
+}
+
+.direitos {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--color-muted);
+}
+
+.links {
+  display: flex;
+  gap: 18px;
+}
+
+.link {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--color-muted);
+  transition: color 0.2s var(--ease-out);
+}
+
+.link:hover {
+  color: var(--color-accent);
+}
