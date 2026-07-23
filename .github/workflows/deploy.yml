@@ -1,0 +1,72 @@
+# Publica o site no GitHub Pages a cada envio para a branch main.
+#
+# O fluxo tem duas etapas separadas de propósito: a primeira monta o site em uma
+# máquina limpa, a segunda pega o resultado e publica. Se o build quebrar, nada
+# é publicado e o site no ar continua o mesmo.
+
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+
+  # Permite disparar manualmente pela aba Actions, útil para republicar sem
+  # precisar inventar um commit.
+  workflow_dispatch:
+
+# Permissões mínimas necessárias para o job de publicação.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Se dois envios acontecerem em sequência, o mais recente cancela o anterior em
+# vez de os dois disputarem quem publica por último.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar o código
+        uses: actions/checkout@v4
+
+      - name: Preparar o Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          # Guarda o cache do npm entre execuções, cortando o tempo de instalação.
+          cache: npm
+
+      # npm ci instala exatamente as versões do package-lock.json e apaga
+      # node_modules antes. É o comando certo para automação: garante que o
+      # servidor use o mesmo código que a minha máquina.
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Gerar o build
+        run: npm run build
+
+      - name: Configurar o Pages
+        uses: actions/configure-pages@v5
+
+      - name: Enviar a pasta dist
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    # Só roda se o build terminar sem erro.
+    needs: build
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Publicar
+        id: deployment
+        uses: actions/deploy-pages@v4

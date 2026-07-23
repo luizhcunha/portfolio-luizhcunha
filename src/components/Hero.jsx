@@ -39,9 +39,15 @@ export function Hero() {
           O atributo download instrui o navegador a salvar o arquivo em vez de
           abrir no visualizador embutido, e o valor dele define o nome com que o
           PDF chega no computador de quem baixou.
+
+          O caminho precisa do BASE_URL porque o site fica publicado em um
+          subdiretório, e não na raiz do domínio. O Vite reescreve caminhos
+          absolutos que encontra no HTML, mas não dentro de strings de
+          JavaScript: escrever "/curriculo.pdf" aqui funcionaria no localhost e
+          daria 404 no ar.
         */}
         <a
-          href="/curriculo-luiz-henrique-cunha-do-nascimento.pdf"
+          href={`${import.meta.env.BASE_URL}curriculo-luiz-henrique-cunha-do-nascimento.pdf`}
           download="Curriculo-Luiz-Henrique-Cunha-do-Nascimento.pdf"
           className={estilos.botaoSecundario}
         >
