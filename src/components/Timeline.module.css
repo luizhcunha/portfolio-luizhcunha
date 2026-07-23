@@ -1,0 +1,110 @@
+.lista {
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  /*
+    Duas colunas: a da esquerda tem largura fixa para os períodos ficarem
+    alinhados verticalmente, e a da direita absorve o resto do espaço.
+  */
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 20px;
+  padding-block: 20px;
+  border-bottom: 1px solid var(--color-border);
+
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity var(--duration-reveal) var(--ease-out) var(--atraso, 0s),
+    transform var(--duration-reveal) var(--ease-out) var(--atraso, 0s),
+    border-color var(--duration-theme) var(--ease-out);
+}
+
+[data-visivel='true'] .item {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.periodo {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--color-muted);
+
+  /* Alinha a primeira linha do período com o texto do cargo ao lado, que tem
+     altura de linha maior. */
+  padding-top: 2px;
+}
+
+.conteudo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cabecalho {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.selo {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 3px 9px;
+  border-radius: var(--radius-pill);
+  background: var(--color-accent-soft);
+  color: var(--color-accent);
+  white-space: nowrap;
+  transition:
+    background var(--duration-theme) var(--ease-out),
+    color var(--duration-theme) var(--ease-out);
+}
+
+.cargo {
+  font-family: var(--font-heading);
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.organizacao {
+  font-size: 14px;
+  color: var(--color-muted);
+}
+
+/*
+  O reset tirou as bolinhas de todas as listas, o que é o certo para menus e
+  grades de tags. Aqui elas voltam, porque este é um dos poucos lugares do site
+  onde a lista é realmente uma enumeração de itens para o leitor.
+*/
+.atividades {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 4px;
+  padding-left: 18px;
+  list-style: disc;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-muted);
+}
+
+.stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.tecnologia {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 4px 9px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-tag);
+  color: var(--color-muted);
+}

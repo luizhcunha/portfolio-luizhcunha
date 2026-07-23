@@ -3,6 +3,7 @@ import { Header } from './components/Header.jsx'
 import { Hero } from './components/Hero.jsx'
 import { Projects } from './components/Projects.jsx'
 import { Skills } from './components/Skills.jsx'
+import { Timeline } from './components/Timeline.jsx'
 import { ProvedorDeIdioma } from './context/ProvedorDeIdioma.jsx'
 import { ProvedorDeTema } from './context/ProvedorDeTema.jsx'
 
@@ -27,6 +28,7 @@ export default function App() {
           <About />
           <Skills />
           <Projects />
+          <Timeline />
         </main>
       </ProvedorDeIdioma>
     </ProvedorDeTema>
