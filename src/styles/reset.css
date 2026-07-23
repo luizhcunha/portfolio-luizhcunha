@@ -1,0 +1,69 @@
+/*
+  RESET
+  =====
+
+  Cada navegador aplica estilos próprios antes dos meus: margem no body,
+  tamanhos diferentes de título, bolinhas em listas. O reset zera essas
+  diferenças para que o site comece do mesmo ponto em todos eles.
+
+  Reset enxuto, só com o que este projeto usa de fato.
+*/
+
+/*
+  Por padrão, largura em CSS conta só o conteúdo. Se um card tem width 300px
+  mais 24px de padding, ele ocupa 348px na tela e estoura o layout. Com
+  border-box, padding e borda passam a caber dentro dos 300px, que é como a
+  gente intuitivamente espera que funcione.
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+p,
+ul,
+figure {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+/*
+  Elementos de formulário não herdam a fonte do documento por padrão, então
+  botões apareceriam com a fonte do sistema no meio do texto.
+*/
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Imagens deixam de estourar o container e param de gerar aquele espaço
+   fantasma embaixo, causado por serem tratadas como texto por padrão. */
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}

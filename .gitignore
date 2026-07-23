@@ -1,0 +1,18 @@
+# Dependências instaladas pelo npm. Qualquer pessoa recria a pasta rodando
+# "npm install", usando o package.json e o package-lock.json como receita.
+node_modules/
+
+# Resultado do "npm run build". É gerado, então versionar seria guardar o bolo
+# pronto junto com a receita.
+dist/
+
+# Arquivos de ambiente com chaves e segredos.
+.env
+.env.local
+
+# Lixo de sistema operacional e de editor.
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/

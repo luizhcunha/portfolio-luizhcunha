@@ -1,0 +1,107 @@
+/*
+  TOKENS DE DESIGN
+  ================
+
+  Todo valor visual que se repete no site mora aqui: cores, fontes, espaçamentos.
+  Nenhum componente escreve uma cor na mão, todos leem daqui com var(--nome).
+
+  A vantagem fica óbvia no tema escuro. Em vez de trocar a cor em cinquenta
+  lugares, as mesmas variáveis são redefinidas dentro de [data-theme="dark"] e o
+  navegador recalcula a página inteira sozinho. O JavaScript só troca um atributo
+  no elemento html.
+
+  SOBRE OKLCH
+  As cores estão em oklch(luminosidade croma matiz), e não em hexadecimal.
+  Diferente do HSL, a luminosidade no OKLCH corresponde ao brilho que o olho
+  humano realmente percebe. Dois tons com a mesma luminosidade parecem
+  igualmente claros, o que mantém o contraste previsível ao trocar de tema.
+*/
+
+:root {
+  /* ---------- Paleta clara (padrão) ---------- */
+
+  /* Fundo da página e uma variação levemente mais escura, usada em faixas,
+     no trilho do botão de tema e no padrão listrado dos cards de projeto. */
+  --color-bg: oklch(98.5% 0.004 250);
+  --color-bg-alt: oklch(95.5% 0.01 250);
+
+  /* Texto principal e texto secundário (parágrafos, legendas, rótulos). */
+  --color-text: oklch(18% 0.02 255);
+  --color-muted: oklch(42% 0.02 255);
+
+  /* Linhas divisórias e fundo dos cards. */
+  --color-border: oklch(88% 0.015 250);
+  --color-card: oklch(99% 0.003 250);
+
+  /* Azul de destaque, sua versão suave (fundo das pills) e a cor do texto que
+     fica por cima do azul sólido. */
+  --color-accent: oklch(52% 0.19 258);
+  --color-accent-soft: oklch(93% 0.045 258);
+  --color-on-accent: oklch(98% 0.005 258);
+
+  /* Fundo do header: a mesma cor da página, porém com 82% de opacidade, para
+     que o blur atrás dele tenha algo para desfocar. */
+  --color-header-bg: oklch(98.5% 0.004 250 / 0.82);
+
+  /* ---------- Cores que não mudam com o tema ---------- */
+
+  /* A faixa de contato usa o mesmo azul vibrante nos dois temas. É o único
+     bloco de cor forte da página, então invertê-lo quebraria o efeito. */
+  --color-vibrant: oklch(54% 0.2 259);
+  --color-on-vibrant: oklch(98% 0.01 259);
+  --color-on-vibrant-muted: oklch(88% 0.03 259);
+
+  /* ---------- Tipografia ---------- */
+
+  /* Space Grotesk nos títulos, IBM Plex Sans no corpo, IBM Plex Mono nos
+     rótulos e tags. As alternativas depois da vírgula entram em ação se o
+     Google Fonts demorar ou falhar. */
+  --font-heading: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'IBM Plex Sans', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  /* ---------- Layout ---------- */
+
+  --layout-max-width: 1100px;
+  --layout-padding-x: 32px;
+  --layout-section-gap: 60px;
+
+  /* ---------- Formas ---------- */
+
+  --radius-card: 8px;
+  --radius-tag: 4px;
+  --radius-pill: 999px;
+
+  /* ---------- Movimento ---------- */
+
+  /* Duração da revelação das seções e da troca de tema, centralizadas para que
+     tudo no site acelere e desacelere junto. */
+  --duration-reveal: 0.7s;
+  --duration-theme: 0.4s;
+  --ease-out: ease;
+}
+
+/*
+  Paleta escura. Só as variáveis que mudam são redefinidas: fontes, espaçamentos
+  e raios continuam herdados do :root, sem repetição.
+
+  O seletor casa com <html data-theme="dark">.
+*/
+[data-theme='dark'] {
+  --color-bg: oklch(15% 0.016 258);
+  --color-bg-alt: oklch(19% 0.02 258);
+
+  --color-text: oklch(95% 0.01 258);
+  --color-muted: oklch(68% 0.02 258);
+
+  --color-border: oklch(30% 0.02 258);
+  --color-card: oklch(20% 0.02 258);
+
+  /* No escuro o azul precisa ser mais claro para manter contraste com o fundo,
+     e o texto sobre ele passa a ser escuro. */
+  --color-accent: oklch(70% 0.16 258);
+  --color-accent-soft: oklch(28% 0.06 258);
+  --color-on-accent: oklch(12% 0.01 258);
+
+  --color-header-bg: oklch(15% 0.016 258 / 0.82);
+}

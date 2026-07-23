@@ -1,0 +1,78 @@
+/*
+  ESTILOS GLOBAIS
+  ===============
+
+  Regras que valem para a página inteira. Tudo que for específico de um
+  componente mora no .module.css dele, não aqui.
+
+  A ordem dos imports importa: os tokens precisam existir antes de qualquer
+  regra que use var(--color-bg), e o reset precisa vir antes dos meus estilos
+  para não sobrescrever o que vem depois.
+*/
+
+@import './tokens.css';
+@import './reset.css';
+
+html {
+  /* Faz os links de âncora (#projetos) deslizarem até a seção em vez de pular
+     de uma vez. */
+  scroll-behavior: smooth;
+
+  /* O header fica fixo por cima da página, então rolar até uma seção esconderia
+     o topo dela atrás da barra. Este offset reserva o espaço. */
+  scroll-padding-top: 90px;
+}
+
+body {
+  min-height: 100vh;
+  font-family: var(--font-body);
+  background: var(--color-bg);
+  color: var(--color-text);
+
+  /* Deixa a troca de tema como um desbotamento suave em vez de um corte seco. */
+  transition:
+    background var(--duration-theme) var(--ease-out),
+    color var(--duration-theme) var(--ease-out);
+}
+
+/*
+  Container padrão das seções: largura máxima de 1100px, centralizado pelas
+  margens automáticas e com respiro nas laterais para não encostar na borda da
+  tela no celular.
+*/
+.container {
+  width: 100%;
+  max-width: var(--layout-max-width);
+  margin-inline: auto;
+  padding-inline: var(--layout-padding-x);
+}
+
+/*
+  Quem navega por teclado precisa enxergar onde está. O :focus-visible aparece
+  só na navegação por Tab, e não no clique de mouse, então o contorno não polui
+  a experiência de quem usa o mouse.
+*/
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/*
+  Algumas pessoas sentem enjoo ou desconforto com movimento na tela e ligam a
+  opção de reduzir movimento no sistema. Quando isso acontece, animações e
+  transições são desligadas em vez de ignorar a preferência.
+*/
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
