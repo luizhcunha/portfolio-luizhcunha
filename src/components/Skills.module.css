@@ -1,0 +1,83 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 22px;
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  transition:
+    background var(--duration-theme) var(--ease-out),
+    border-color var(--duration-theme) var(--ease-out);
+}
+
+.cardLinguagens {
+  composes: card;
+  gap: 18px;
+  padding: 24px;
+}
+
+.rotuloCard {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-muted);
+}
+
+/*
+  auto-fill cria quantas colunas de no mínimo 88px couberem na largura
+  disponível, e o 1fr faz elas dividirem a sobra igualmente. Nenhuma media query
+  envolvida: a grade se reorganiza sozinha conforme o espaço.
+
+  A diferença para auto-fit aparece quando há poucos itens: auto-fill mantém as
+  colunas vazias reservadas, o que aqui é o desejado, porque impede que seis
+  ícones estiquem até ocuparem a linha inteira.
+*/
+.gradeLinguagens {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(88px, 1fr));
+  gap: 20px;
+}
+
+.linguagem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.nomeLinguagem {
+  font-size: 12px;
+  color: var(--color-muted);
+  text-align: center;
+}
+
+/*
+  Aqui o auto-fit é o certo: com poucos grupos, as colunas vazias colapsam e os
+  cards existentes se esticam para preencher a linha, sem deixar buraco.
+*/
+.gradeGrupos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-content: flex-start;
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  padding: 6px 10px;
+  border-radius: var(--radius-tag);
+  background: var(--color-accent-soft);
+  color: var(--color-accent);
+  transition:
+    background var(--duration-theme) var(--ease-out),
+    color var(--duration-theme) var(--ease-out);
+}

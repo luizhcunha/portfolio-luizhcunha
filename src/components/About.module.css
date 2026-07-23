@@ -1,0 +1,12 @@
+.corpo {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--color-muted);
+
+  /*
+    Linha longa demais cansa: o olho perde a referência ao voltar para o começo
+    da linha seguinte. Entre 60 e 75 caracteres é a faixa confortável, e a
+    unidade ch mede exatamente isso.
+  */
+  max-width: 70ch;
+}

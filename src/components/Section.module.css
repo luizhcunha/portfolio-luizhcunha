@@ -1,0 +1,51 @@
+.secao {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding-block: var(--layout-section-gap);
+
+  /*
+    Estado inicial: invisível e deslocado 28px para baixo. A classe .visivel
+    entra quando o IntersectionObserver dispara, e a transição faz o caminho
+    entre os dois estados.
+
+    Uso opacity e transform, e não display ou top, porque essas duas
+    propriedades o navegador consegue animar na placa de vídeo, sem recalcular
+    o layout da página a cada quadro.
+  */
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity var(--duration-reveal) var(--ease-out),
+    transform var(--duration-reveal) var(--ease-out);
+}
+
+.visivel {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cabecalho {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.rotulo {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: var(--color-accent);
+}
+
+.titulo {
+  font-family: var(--font-heading);
+  font-size: clamp(26px, 3.6vw, 36px);
+  font-weight: 600;
+}
+
+.subtitulo {
+  font-size: 16px;
+  color: var(--color-muted);
+  max-width: 60ch;
+}

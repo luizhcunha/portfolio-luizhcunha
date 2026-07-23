@@ -1,5 +1,7 @@
+import { About } from './components/About.jsx'
 import { Header } from './components/Header.jsx'
 import { Hero } from './components/Hero.jsx'
+import { Skills } from './components/Skills.jsx'
 import { ProvedorDeIdioma } from './context/ProvedorDeIdioma.jsx'
 import { ProvedorDeTema } from './context/ProvedorDeTema.jsx'
 
@@ -21,6 +23,8 @@ export default function App() {
 
         <main>
           <Hero />
+          <About />
+          <Skills />
         </main>
       </ProvedorDeIdioma>
     </ProvedorDeTema>
