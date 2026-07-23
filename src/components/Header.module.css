@@ -61,3 +61,25 @@
   align-items: center;
   gap: 16px;
 }
+
+/*
+  No celular a barra empilha em três linhas e come metade da tela. Apertar o
+  espaçamento e reduzir a fonte do menu devolve boa parte dessa altura, sem
+  precisar de menu sanduíche para cinco itens curtos.
+*/
+@media (max-width: 640px) {
+  .header {
+    gap: 12px;
+    padding: 14px var(--layout-padding-x);
+  }
+
+  .nav {
+    gap: 16px;
+    order: 3;
+    width: 100%;
+  }
+
+  .link {
+    font-size: 13px;
+  }
+}

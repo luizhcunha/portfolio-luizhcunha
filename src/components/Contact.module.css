@@ -95,3 +95,22 @@
 .faixa :focus-visible {
   outline-color: var(--color-on-vibrant);
 }
+
+@media (max-width: 640px) {
+  .faixa {
+    padding-block: 64px;
+  }
+
+  /*
+    Os três botões lado a lado ficam apertados demais no celular. Empilhados e
+    esticados, cada um vira um alvo de toque confortável.
+  */
+  .acoes {
+    flex-direction: column;
+    align-self: stretch;
+  }
+
+  .botao {
+    text-align: center;
+  }
+}

@@ -13,14 +13,24 @@
 @import './tokens.css';
 @import './reset.css';
 
+/*
+  Altura da barra fixa. O valor real é escrito aqui pelo próprio header assim
+  que ele se mede, e o que está abaixo serve apenas como reserva para o instante
+  entre a primeira pintura e a medição.
+*/
+:root {
+  --altura-header: 71px;
+}
+
 html {
   /* Faz os links de âncora (#projetos) deslizarem até a seção em vez de pular
      de uma vez. */
   scroll-behavior: smooth;
 
   /* O header fica fixo por cima da página, então rolar até uma seção esconderia
-     o topo dela atrás da barra. Este offset reserva o espaço. */
-  scroll-padding-top: 90px;
+     o topo dela atrás da barra. Este offset reserva o espaço, com uma folga
+     para a seção não encostar na barra. */
+  scroll-padding-top: calc(var(--altura-header) + 24px);
 }
 
 body {
@@ -56,6 +66,49 @@ body {
   outline: 2px solid var(--color-accent);
   outline-offset: 3px;
   border-radius: 2px;
+}
+
+/*
+  Atalho para pular o menu.
+
+  Quem navega por teclado ou leitor de tela teria que passar por todos os links
+  do header antes de chegar ao conteúdo, em toda visita. Este link é o primeiro
+  elemento focável da página e some da tela até receber foco.
+
+  Fica escondido acima da área visível em vez de usar display none, porque
+  elementos com display none saem da ordem de tabulação e nunca seriam
+  alcançados.
+*/
+.pular-navegacao {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  z-index: 100;
+  padding: 12px 20px;
+  border-radius: var(--radius-tag);
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+  font-size: 14px;
+  font-weight: 600;
+  transition: top 0.2s var(--ease-out);
+}
+
+.pular-navegacao:focus {
+  top: 16px;
+}
+
+/* ---------- Telas estreitas ---------- */
+
+/*
+  Um único ponto de quebra dá conta porque as grades já se reorganizam sozinhas
+  com auto-fit e minmax. O que sobra aqui são ajustes que o CSS não tem como
+  adivinhar: respiro lateral menor e faixas menos altas.
+*/
+@media (max-width: 640px) {
+  :root {
+    --layout-padding-x: 20px;
+    --layout-section-gap: 44px;
+  }
 }
 
 /*

@@ -21,9 +21,12 @@
   flex-direction: column;
   gap: 20px;
 
-  /* O espaço maior no topo compensa o header, que é fixo e não ocupa espaço no
-     fluxo da página. */
-  padding-block: 170px 120px;
+  /*
+    O topo reserva a altura real do header, medida por ele mesmo, mais o respiro
+    do desenho. Com um valor fixo, a primeira linha ficaria escondida atrás da
+    barra no celular, onde o menu quebra em várias linhas.
+  */
+  padding-block: calc(var(--altura-header) + 100px) 120px;
 }
 
 /*

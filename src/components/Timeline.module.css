@@ -108,3 +108,15 @@
   border-radius: var(--radius-tag);
   color: var(--color-muted);
 }
+
+/*
+  Em tela estreita não sobra largura para duas colunas: o período comeria o
+  espaço do texto e o cargo quebraria a cada duas palavras. A grade vira uma
+  coluna só, com o período virando uma linha de apoio acima do cargo.
+*/
+@media (max-width: 640px) {
+  .item {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}

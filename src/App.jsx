@@ -8,6 +8,7 @@ import { Skills } from './components/Skills.jsx'
 import { Timeline } from './components/Timeline.jsx'
 import { ProvedorDeIdioma } from './context/ProvedorDeIdioma.jsx'
 import { ProvedorDeTema } from './context/ProvedorDeTema.jsx'
+import { useIdioma } from './context/language.js'
 
 /*
   Componente raiz do site.
@@ -21,22 +22,40 @@ import { ProvedorDeTema } from './context/ProvedorDeTema.jsx'
 
   Daqui para baixo é só composição: a ordem das linhas é a ordem da página.
 */
+/*
+  A página em si. Fica separada do App porque precisa ler o idioma, e para isso
+  tem que estar por dentro do provedor, não ao lado dele.
+*/
+function Pagina() {
+  const { t } = useIdioma()
+
+  return (
+    <>
+      <a href="#conteudo" className="pular-navegacao">
+        {t.acessibilidade.irParaConteudo}
+      </a>
+
+      <Header />
+
+      <main id="conteudo">
+        <Hero />
+        <About />
+        <Skills />
+        <Projects />
+        <Timeline />
+        <Contact />
+      </main>
+
+      <Footer />
+    </>
+  )
+}
+
 export default function App() {
   return (
     <ProvedorDeTema>
       <ProvedorDeIdioma>
-        <Header />
-
-        <main>
-          <Hero />
-          <About />
-          <Skills />
-          <Projects />
-          <Timeline />
-          <Contact />
-        </main>
-
-        <Footer />
+        <Pagina />
       </ProvedorDeIdioma>
     </ProvedorDeTema>
   )

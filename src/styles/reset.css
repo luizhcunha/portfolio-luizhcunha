@@ -27,11 +27,18 @@ h2,
 h3,
 p,
 ul,
+ol,
 figure {
   margin: 0;
 }
 
-ul {
+/*
+  Listas ordenadas entram junto das não ordenadas. Esquecer o ol deixa um recuo
+  de 40px que o navegador aplica sozinho, e que aparece como um desalinhamento
+  difícil de rastrear depois.
+*/
+ul,
+ol {
   padding: 0;
   list-style: none;
 }
