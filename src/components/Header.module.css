@@ -1,0 +1,63 @@
+.header {
+  /*
+    position: fixed tira o elemento do fluxo normal e o prende à viewport, então
+    ele fica visível durante o scroll. Como sai do fluxo, o conteúdo abaixo sobe
+    para ocupar o lugar dele, e por isso o topo da página reserva espaço extra.
+  */
+  position: fixed;
+  inset: 0 0 auto 0;
+
+  /* Empilhamento acima de qualquer conteúdo da página. */
+  z-index: 50;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 18px var(--layout-padding-x);
+
+  /*
+    O fundo é a cor da página com 82% de opacidade. Os 18% de transparência são
+    o que dá ao backdrop-filter algo para desfocar: sem eles, o blur não teria
+    efeito visível porque nada apareceria por trás.
+  */
+  background: var(--color-header-bg);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--color-border);
+
+  transition:
+    background var(--duration-theme) var(--ease-out),
+    border-color var(--duration-theme) var(--ease-out);
+}
+
+.marca {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+}
+
+.nav {
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.link {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-muted);
+  transition: color 0.2s var(--ease-out);
+}
+
+.link:hover {
+  color: var(--color-text);
+}
+
+.controles {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}

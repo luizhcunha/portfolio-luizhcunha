@@ -1,0 +1,48 @@
+.pilula {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 4px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: var(--color-bg-alt);
+  transition:
+    background var(--duration-theme) var(--ease-out),
+    border-color var(--duration-theme) var(--ease-out);
+}
+
+.botao {
+  padding: 5px 10px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-muted);
+  background: transparent;
+  transition:
+    background 0.2s var(--ease-out),
+    color 0.2s var(--ease-out);
+}
+
+.botao:hover {
+  color: var(--color-text);
+}
+
+/*
+  A classe do estado ativo herda tudo da classe base com composes, um recurso
+  dos CSS Modules. Evita repetir padding, fonte e raio, e deixa explícito que
+  este é o mesmo botão em outro estado.
+*/
+.botaoAtivo {
+  composes: botao;
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+}
+
+/*
+  Como o elemento ativo carrega as duas classes, a regra de hover da classe base
+  também o atingiria e clarearia o texto por cima do azul. Esta regra vem depois
+  e, com a mesma especificidade, vence pela ordem no arquivo.
+*/
+.botaoAtivo:hover {
+  color: var(--color-on-accent);
+}

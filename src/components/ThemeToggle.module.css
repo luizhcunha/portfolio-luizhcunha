@@ -1,0 +1,37 @@
+/*
+  Arquivo .module.css: as classes daqui ficam isoladas neste componente.
+
+  Na hora do build, ".trilho" vira algo como "_trilho_1f8ka_3", com um sufixo
+  único. Por isso posso usar nomes curtos e genéricos sem medo de colidir com
+  uma classe de mesmo nome em outro componente.
+*/
+
+.trilho {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  flex-shrink: 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: var(--color-bg-alt);
+  transition:
+    background var(--duration-theme) var(--ease-out),
+    border-color var(--duration-theme) var(--ease-out);
+}
+
+.bolinha {
+  position: absolute;
+  top: 2px;
+
+  /* Definida no JSX conforme o tema atual. O 2px depois da vírgula é o valor de
+     reserva, usado caso a variável não chegue por algum motivo. */
+  left: var(--posicao, 2px);
+
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  transition:
+    left 0.25s var(--ease-out),
+    background var(--duration-theme) var(--ease-out);
+}
