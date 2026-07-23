@@ -1,7 +1,7 @@
 import { Header } from './components/Header.jsx'
+import { Hero } from './components/Hero.jsx'
 import { ProvedorDeIdioma } from './context/ProvedorDeIdioma.jsx'
 import { ProvedorDeTema } from './context/ProvedorDeTema.jsx'
-import { useIdioma } from './context/language.js'
 
 /*
   Componente raiz do site.
@@ -13,32 +13,15 @@ import { useIdioma } from './context/language.js'
   Os provedores ficam por fora de tudo para que qualquer seção, em qualquer
   profundidade, consiga ler o tema e o idioma sem receber nada por props.
 */
-
-function Pagina() {
-  const { t } = useIdioma()
-
-  return (
-    <>
-      <Header />
-
-      <main id="topo" className="container" style={{ paddingBlock: '170px 120px' }}>
-        <h1 style={{ fontFamily: 'var(--font-heading)', fontSize: '40px' }}>
-          {t.hero.nome}
-        </h1>
-
-        <p style={{ color: 'var(--color-muted)', marginTop: '12px', lineHeight: 1.6 }}>
-          {t.hero.subtitulo}
-        </p>
-      </main>
-    </>
-  )
-}
-
 export default function App() {
   return (
     <ProvedorDeTema>
       <ProvedorDeIdioma>
-        <Pagina />
+        <Header />
+
+        <main>
+          <Hero />
+        </main>
       </ProvedorDeIdioma>
     </ProvedorDeTema>
   )
