@@ -45,10 +45,13 @@ export function Hero() {
           absolutos que encontra no HTML, mas não dentro de strings de
           JavaScript: escrever "/curriculo.pdf" aqui funcionaria no localhost e
           daria 404 no ar.
+
+          O arquivo vem do conteúdo, então quem lê em inglês baixa o currículo
+          em inglês.
         */}
         <a
-          href={`${import.meta.env.BASE_URL}curriculo-luiz-henrique-cunha-do-nascimento.pdf`}
-          download="Curriculo-Luiz-Henrique-Cunha-do-Nascimento.pdf"
+          href={`${import.meta.env.BASE_URL}${t.hero.curriculo.arquivo}`}
+          download={t.hero.curriculo.nomeDownload}
           className={estilos.botaoSecundario}
         >
           {t.hero.ctaCurriculo}

@@ -12,7 +12,7 @@ const pt = {
     lang: 'pt-BR',
     titulo: 'Luiz Henrique Cunha do Nascimento | Desenvolvedor e Suporte de TI',
     descricao:
-      'Portfólio de Luiz Henrique Cunha do Nascimento, tecnólogo em Análise e Desenvolvimento de Sistemas em Manaus. Sistemas internos, automações e infraestrutura de TI.',
+      'Portfólio de Luiz Henrique Cunha do Nascimento, tecnólogo em Análise e Desenvolvimento de Sistemas em Manaus. Sistemas internos em React e Node.js, automações e infraestrutura de TI.',
   },
 
   nav: {
@@ -27,17 +27,22 @@ const pt = {
     eyebrow: 'DESENVOLVEDOR & SUPORTE DE TI',
     nome: 'Luiz Henrique Cunha do Nascimento',
     subtitulo:
-      'Transformo processos manuais em sistemas automatizados, da infraestrutura de TI ao código que economiza dias de trabalho.',
+      'Transformo processos manuais em sistemas automatizados, da infraestrutura de TI ao código que economiza horas de trabalho.',
     local: 'Manaus, AM, Brasil',
     ctaProjetos: 'Ver projetos',
     ctaCurriculo: 'Baixar currículo',
+    // Arquivo em public/ e o nome com que ele chega no computador de quem baixa.
+    curriculo: {
+      arquivo: 'curriculo-luiz-henrique-cunha-do-nascimento.pdf',
+      nomeDownload: 'Curriculo-Luiz-Henrique-Cunha-do-Nascimento.pdf',
+    },
   },
 
   sobre: {
     rotulo: '01 / Sobre',
     titulo: 'Sobre mim',
     corpo:
-      'Sou tecnólogo em Análise e Desenvolvimento de Sistemas e atuo com suporte e infraestrutura de TI, enquanto desenvolvo sistemas próprios em JavaScript, Java e Kotlin. Gosto de resolver problemas reais: automatizar tarefas que levavam dias e reduzi-las a minutos, construir ferramentas internas do zero e criar aplicações com impacto de verdade.',
+      'Sou profissional de TI e uno desenvolvimento de sistemas e infraestrutura. Desenvolvo sistemas internos em React e Node.js usados na operação da empresa, do controle financeiro ao acompanhamento da frota em tempo real, e administro Active Directory, Microsoft 365 e o suporte N1/N2. Sou formado em Análise e Desenvolvimento de Sistemas.',
   },
 
   habilidades: {
@@ -45,41 +50,46 @@ const pt = {
     titulo: 'O que eu uso no dia a dia',
     tituloLinguagens: 'Linguagens',
     grupos: [
-      { titulo: 'Bancos de dados', itens: ['MySQL', 'SQLite'] },
       {
-        titulo: 'Ferramentas & Plataformas',
+        titulo: 'Front-end',
+        itens: ['React', 'Vite', 'Tailwind CSS', 'shadcn/ui', 'Recharts', 'HTML', 'CSS'],
+      },
+      {
+        titulo: 'Back-end',
         itens: [
-          'Git',
-          'GitHub',
-          'Figma',
-          'Notion',
-          'Microsoft 365',
-          'SharePoint',
-          'Power Automate',
-          'Active Directory',
-          'Windows Server',
-          'Snipe-IT',
+          'Node.js',
+          'Express',
+          'APIs REST',
+          'Socket.IO',
+          'Autenticação por sessão',
+          'RBAC',
         ],
+      },
+      {
+        titulo: 'Banco de dados',
+        itens: ['PostgreSQL (Supabase)', 'SQLite', 'MySQL', 'Redis'],
+      },
+      {
+        titulo: 'Nuvem & DevOps',
+        itens: ['Docker', 'Vercel', 'Railway', 'Cloudflare', 'Git', 'GitHub'],
+      },
+      {
+        titulo: 'Mobile & Mapas',
+        itens: ['Capacitor (Android)', 'Google Maps Platform', 'Routes API', 'Geocoding API'],
       },
       {
         titulo: 'Infraestrutura & Suporte',
         itens: [
+          'Active Directory',
+          'Windows Server',
+          'Microsoft 365',
+          'SharePoint',
+          'Power Automate',
+          'Snipe-IT',
           'Suporte N1/N2',
-          'Helpdesk',
-          'Gestão de ativos de TI',
-          'Administração de usuários e acessos',
         ],
       },
-      {
-        titulo: 'Conceitos',
-        itens: [
-          'APIs REST',
-          'Integração de sistemas',
-          'Computação em nuvem',
-          'Scrum',
-          'Kanban',
-        ],
-      },
+      { titulo: 'Metodologias', itens: ['Scrum', 'Kanban'] },
       {
         titulo: 'Idiomas',
         itens: ['Português: nativo', 'Inglês: B2 (intermediário avançado)'],
@@ -93,25 +103,43 @@ const pt = {
     subtitulo: 'Uma seleção de sistemas que desenvolvi, do interno ao acadêmico.',
     itens: [
       {
-        id: 'farol',
-        tag: 'Sistema Interno · NDA',
-        titulo: 'Farol',
-        subtitulo:
-          'Sistema de Insights e Extração de Informações para Avaliação de Produtividade',
+        id: 'rotas',
+        tag: 'Sistema Interno',
+        titulo: 'Sistema de Rotas da Frota',
+        subtitulo: 'Planejamento e acompanhamento de rotas em tempo real, com OCR',
         descricao:
-          'Plataforma interna que transforma dados operacionais brutos em insights de produtividade, automatizando extrações que antes eram feitas manualmente. Por ser um sistema proprietário da empresa, detalhes técnicos e capturas de tela estão sob NDA.',
-        stack: ['JavaScript', 'APIs REST', 'Cloud'],
-        legendaImagem: 'Sob NDA, sem capturas públicas',
+          'Substituiu o planejamento em papel por uma interface web, com acompanhamento das rotas em tempo real e pontuação de desempenho baseada no trajeto e no tempo percorrido. Inclui controle de acesso por perfil e um app Android para quem está na rua.',
+        stack: [
+          'React',
+          'Tailwind CSS',
+          'Node.js',
+          'Socket.IO',
+          'SQLite',
+          'Google Maps',
+          'Capacitor',
+          'Docker',
+        ],
+        legendaImagem: 'Sistema interno, sem capturas públicas',
       },
       {
-        id: 'jolustore',
-        tag: 'Site Institucional',
-        titulo: 'Jolustore',
-        subtitulo: 'Site estático com módulo pet',
+        id: 'caixas',
+        tag: 'Sistema Interno',
+        titulo: 'Controle de Caixas',
+        subtitulo: 'De horas de planilha para 3 a 5 minutos por dia',
         descricao:
-          'Site institucional estático com um módulo dedicado à linha pet, apresentando produtos e informações da loja com foco em performance e simplicidade.',
-        stack: ['HTML', 'CSS', 'JavaScript'],
-        legendaImagem: 'Captura em breve',
+          'Eliminou o preenchimento manual diário de uma planilha com cerca de 80 linhas e colunas. O trabalho que levava horas passou a levar de 3 a 5 minutos, mais de 95% de ganho de produtividade, com gráficos para acompanhar os números.',
+        stack: ['React', 'Recharts', 'Node.js', 'Vercel', 'Supabase', 'PostgreSQL', 'Redis'],
+        legendaImagem: 'Sistema interno, sem capturas públicas',
+      },
+      {
+        id: 'chatbot',
+        tag: 'Automação · Estágio',
+        titulo: 'Chatbot de Atendimento',
+        subtitulo: 'Respostas automáticas pelo WhatsApp oficial',
+        descricao:
+          'Chatbot de atendimento ao cliente construído com Meta Business e a API oficial do WhatsApp, automatizando as respostas às dúvidas mais frequentes.',
+        stack: ['JavaScript', 'WhatsApp API', 'Meta Business'],
+        legendaImagem: 'Sistema interno, sem capturas públicas',
       },
       {
         id: 'meutea',
@@ -119,8 +147,8 @@ const pt = {
         titulo: 'MeuTEA',
         subtitulo: 'App para crianças com TEA',
         descricao:
-          'Aplicativo mobile desenvolvido do zero durante o técnico em informática com ênfase em programação, voltado para crianças com TEA (Transtorno do Espectro Autista), para apoiar e facilitar a comunicação.',
-        stack: ['Java', 'Kotlin'],
+          'Aplicativo Android desenvolvido do zero como projeto de conclusão do técnico em informática, voltado para crianças com TEA (Transtorno do Espectro Autista), para apoiar e facilitar a comunicação.',
+        stack: ['Java', 'Kotlin', 'Android'],
         legendaImagem: 'Captura em breve',
       },
     ],
@@ -137,10 +165,12 @@ const pt = {
         cargo: 'Assistente de TI',
         organizacao: 'Zona Azul Manaus',
         atividades: [
-          'Administro Active Directory, Microsoft 365 e SharePoint para toda a operação.',
-          'Desenvolvo sistemas internos em JavaScript que automatizam processos administrativos.',
+          'Desenvolvi o sistema de rotas da frota com OCR, com acompanhamento em tempo real e pontuação de desempenho.',
+          'Desenvolvi o sistema de controle de caixas, reduzindo horas de trabalho manual para 3 a 5 minutos.',
+          'Administro Active Directory, Windows Server e Microsoft 365, e presto suporte N1 e N2.',
+          'Automatizo fluxos com Power Automate e elaboro procedimentos e documentação técnica de TI.',
         ],
-        stack: ['JavaScript', 'Power Automate'],
+        stack: ['React', 'Node.js', 'Supabase', 'Docker', 'Power Automate'],
       },
       {
         id: 'auxiliar-ti',
@@ -149,10 +179,11 @@ const pt = {
         cargo: 'Auxiliar de TI',
         organizacao: 'Zona Azul Manaus',
         atividades: [
-          'Implementei o Snipe-IT para gerenciar mais de 350 ativos de TI, centralizando controles antes feitos em planilhas.',
-          'Desenvolvi sistemas internos em JavaScript, reduzindo rotinas de dias para minutos.',
+          'Implementei o Snipe-IT para gerenciar mais de 350 ativos de TI, substituindo planilhas descentralizadas.',
+          'Desenvolvi os primeiros sistemas internos em JavaScript e automações em Power Automate da área.',
+          'Atuei na administração de AD, Microsoft 365 e SharePoint e no suporte N2.',
         ],
-        stack: ['JavaScript', 'SQL'],
+        stack: ['JavaScript', 'Power Automate', 'Snipe-IT'],
       },
       {
         id: 'estagiario-ti',
@@ -161,30 +192,20 @@ const pt = {
         cargo: 'Estagiário de TI',
         organizacao: 'Zona Azul Manaus',
         atividades: [
-          'Desenvolvi um chatbot de atendimento com a API oficial do WhatsApp.',
-          'Prestei suporte de helpdesk N1 e modernizei equipamentos antigos.',
+          'Desenvolvi um chatbot de atendimento com Meta Business e a API oficial do WhatsApp.',
+          'Prestei suporte helpdesk N1 e fiz manutenção e modernização de computadores.',
         ],
-        stack: ['JavaScript'],
-      },
-      {
-        id: 'extensao-esbam',
-        periodo: 'Jun 2023 - Dez 2025',
-        tipo: 'Liderança',
-        cargo: 'Representante de Projeto de Extensão',
-        organizacao: 'Centro Universitário ESBAM',
-        atividades: [
-          'Representei o grupo de alunos em reuniões com professores e coordenação.',
-          'Projeto concluído com nota máxima 10 na avaliação final.',
-        ],
-        stack: [],
+        stack: ['JavaScript', 'WhatsApp API'],
       },
       {
         id: 'ads-uniesbam',
         periodo: 'Jun 2023 - Dez 2025',
         tipo: 'Formação',
         cargo: 'Tecnólogo em Análise e Desenvolvimento de Sistemas',
-        organizacao: 'UNIESBAM',
-        atividades: [],
+        organizacao: 'UNIESBAM, Centro Universitário ESBAM',
+        atividades: [
+          'Representante do projeto de extensão do curso, organizando as entregas da equipe e a comunicação com orientadores. O projeto recebeu nota máxima 10.',
+        ],
         stack: [],
       },
       {
@@ -193,7 +214,7 @@ const pt = {
         tipo: 'Formação',
         cargo: 'Técnico em Informática com Ênfase em Programação',
         organizacao: 'FUCAPI',
-        atividades: ['Projeto de conclusão: MeuTEA'],
+        atividades: ['Projeto de conclusão: MeuTEA, app Android para crianças com TEA.'],
         stack: ['Java', 'Kotlin'],
       },
     ],
