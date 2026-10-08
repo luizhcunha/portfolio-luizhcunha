@@ -12,12 +12,11 @@ export default defineConfig({
   /*
     Prefixo aplicado a todo caminho de arquivo gerado no build.
 
-    O GitHub Pages publica o site em /portfolio-luizhcunha/ e não na raiz do
-    domínio. Sem este prefixo, o HTML pediria /assets/index.js, o servidor
-    procuraria na raiz, não acharia nada, e o resultado seria uma página branca
-    com erro 404 no console.
-
-    Em desenvolvimento o Vite ignora este valor e serve tudo a partir da raiz.
+    Com o domínio próprio, o site mora na raiz de luizhcn.com.br, então o
+    prefixo é só a barra. Se um dia ele voltar a ser publicado num subdiretório,
+    como luizhcunha.github.io/portfolio-luizhcunha/, este valor precisa virar o
+    nome do subdiretório, senão o HTML pede os arquivos no lugar errado e a
+    página fica em branco.
   */
-  base: '/portfolio-luizhcunha/',
+  base: '/',
 })

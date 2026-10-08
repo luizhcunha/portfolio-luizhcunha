@@ -3,7 +3,7 @@
 Portfólio pessoal de página única, com alternância entre português e inglês, tema claro e escuro, e animações
 de entrada acionadas pelo scroll.
 
-**Site no ar:** [luizhcunha.github.io/portfolio-luizhcunha](https://luizhcunha.github.io/portfolio-luizhcunha/)
+**Site no ar:** [luizhcn.com.br](https://luizhcn.com.br)
 
 ## Stack
 
